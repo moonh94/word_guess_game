@@ -1,59 +1,84 @@
 //variables
-var question = ["cars", "toy story", "mulan", "finding nemo"]; 
-var letterGuessed;
-var alphabet = ["a","b","c","d","e", "f","g",
-"h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
-"r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var guessRemaining;
+var question = ["cars", "mulan", "toy story", "cinderella", "frozen"];
+var letterGuessed = [];
+var alphabet = ["a", "b", "c", "d", "e", "f", "g",
+    "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+    "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var actualWord = "";
 
 
-for (var i = 0; i < question.length; i++) {
-}
+for (var i = 0; i < question.length; i++) 
+
+    //random word/question
+    actualWord = question[Math.floor(Math.random() * question.length)];
+        
+   
 
 
 
 
 
-// randomly chooses a word        
-document.getElementById("question").innerHTML = question[Math.floor(Math.random() * question.length)]; {
-  
-}
-
-var score = 0;
-var questionIndex = 0;
+    var num = 0;
+    var score = 0;
+    var questionIndex = 0;
 
 
-//functions
-//show next question
-function renderQuestion() {
-     if (questionIndex <= (question.length - 1)) {
-        document.querySelector("#question").innerHTML = question[questionIndex];
+    //function
+    //show next question
+    function renderQuestion() {
+        if (questionIndex <= (question.length - 1)) {
+            document.querySelector("#question").innerHTML = question[questionIndex];
+
+        } else {
+            //end game if we run out of questions
+            document.querySelector("#question").innerHTML = "Game Over";
+        }
+    }
     
-    } else {
-        //end game if we run out of questions
-        document.querySelector("#question").innerHTML = "Game Over";
+    //update score
+    function updateScore() {
+        document.querySelector("#score").innerHTML = "Score: " + score;
+
     }
-}
-//update score
-function updateScore() {
-    document.querySelector("#score").innerHTML = "Score: " + score;
 
-}
+    //Main Process
 
-//Main Process
+    updateScore();
+    renderQuestion();
 
-updateScore();
-renderQuestion(); 
+    document.onkeyup = function (event) {
 
-document.onkeyup = function() {
-    var userInput = event.key.toLowerCase();
+        var userGuess = event.key;
+        console.log(userGuess);
 
-    if (questionIndex === question.length){
-        return;
-    }
+        //randomly chooses next question
+
+        userGuess = document.querySelector("#question").innerHTML = question[Math.floor(Math.random() * question.length)];
+
+        if (questionIndex === question.length) {
+
+            return;
+        }
+        if (userGuess === ("c" || "a" || "r" || "s")) {
+            alphabet.push("<question>");
+        } else {
+            alphabet.push("#letterGuessed");
+        } 
+        }
+    
+    // if (userGuess === "c") {
+    //     document.querySelector("#question").innerHTML = "c----";
+    // } else {
+    //     alphabet.push("#lettersGuessed");
+
+    // }
+
+
+
+
+
+
     // if (userInput === ""
 
 
     //.push for the guesses
-    //
-}
